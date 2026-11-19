@@ -15,6 +15,10 @@ output "redhat_openshift_clusters_console_url" {
   description = "Map of console_url values across all redhat_openshift_clusters, keyed the same as var.redhat_openshift_clusters"
   value       = { for k, v in azurerm_redhat_openshift_cluster.redhat_openshift_clusters : k => v.console_url if v.console_url != null && length(v.console_url) > 0 }
 }
+output "redhat_openshift_clusters_identity" {
+  description = "Map of identity values across all redhat_openshift_clusters, keyed the same as var.redhat_openshift_clusters"
+  value       = { for k, v in azurerm_redhat_openshift_cluster.redhat_openshift_clusters : k => one(v.identity) if v.identity != null && length(v.identity) > 0 }
+}
 output "redhat_openshift_clusters_ingress_profile" {
   description = "Map of ingress_profile values across all redhat_openshift_clusters, keyed the same as var.redhat_openshift_clusters"
   value       = { for k, v in azurerm_redhat_openshift_cluster.redhat_openshift_clusters : k => one(v.ingress_profile) if v.ingress_profile != null && length(v.ingress_profile) > 0 }
@@ -34,6 +38,10 @@ output "redhat_openshift_clusters_name" {
 output "redhat_openshift_clusters_network_profile" {
   description = "Map of network_profile values across all redhat_openshift_clusters, keyed the same as var.redhat_openshift_clusters"
   value       = { for k, v in azurerm_redhat_openshift_cluster.redhat_openshift_clusters : k => one(v.network_profile) if v.network_profile != null && length(v.network_profile) > 0 }
+}
+output "redhat_openshift_clusters_platform_workload_identity_profile" {
+  description = "Map of platform_workload_identity_profile values across all redhat_openshift_clusters, keyed the same as var.redhat_openshift_clusters"
+  value       = { for k, v in azurerm_redhat_openshift_cluster.redhat_openshift_clusters : k => one(v.platform_workload_identity_profile) if v.platform_workload_identity_profile != null && length(v.platform_workload_identity_profile) > 0 }
 }
 output "redhat_openshift_clusters_resource_group_name" {
   description = "Map of resource_group_name values across all redhat_openshift_clusters, keyed the same as var.redhat_openshift_clusters"
